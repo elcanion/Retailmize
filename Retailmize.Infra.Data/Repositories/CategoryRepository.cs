@@ -1,4 +1,5 @@
-﻿using Retailmize.Domain.Entities;
+﻿using Microsoft.EntityFrameworkCore;
+using Retailmize.Domain.Entities;
 using Retailmize.Domain.Interfaces;
 using Retailmize.Infra.Data.Context;
 using System;
@@ -26,22 +27,26 @@ namespace Retailmize.Infra.Data.Repositories
 
         public async Task<IEnumerable<Category>> GetAll()
         {
-            throw new NotImplementedException();
+            return await _context.Categories.ToListAsync();
         }
 
-        public async Task<Category> GetById(int? Id)
+        public async Task<Category> GetById(int? id)
         {
-            throw new NotImplementedException();
+            return await _context.Categories.FindAsync(id);
         }
 
         public async Task<Category> Remove(Category category)
         {
-            throw new NotImplementedException();
+            _context.Remove(category);
+            await _context.SaveChangesAsync();
+            return category;
         }
 
         public async Task<Category> Update(Category category)
         {
-            throw new NotImplementedException();
+            _context.Update(category);
+            await _context.SaveChangesAsync();
+            return category;
         }
     }
 }

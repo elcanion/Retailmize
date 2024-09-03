@@ -1,43 +1,55 @@
-﻿using Retailmize.Domain.Entities;
+﻿using Microsoft.EntityFrameworkCore;
+using Retailmize.Domain.Entities;
 using Retailmize.Domain.Interfaces;
-using System;
+using Retailmize.Infra.Data.Context;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Retailmize.Infra.Data.Repositories
 {
     public class ProductRepository : IProductRepository
     {
-        public Task<Product> Create(Product product)
+        ApplicationDbContext _context;
+        public ProductRepository(ApplicationDbContext context)
         {
-            throw new NotImplementedException();
+            _context = context;
         }
 
-        public Task<IEnumerable<Product>> GetAll()
+        public async Task<Product> Create(Product product)
         {
-            throw new NotImplementedException();
+            _context.Add(product);
+            await _context.SaveChangesAsync();
+            return product;
         }
 
-        public Task<Product> GetById(int? id)
+        public async Task<IEnumerable<Product>> GetAll()
         {
-            throw new NotImplementedException();
+            return await _context.Products.ToListAsync();
         }
 
-        public Task<Product> GetProductCategory(int? id)
+        public async Task<Product> GetById(int? id)
         {
-            throw new NotImplementedException();
+            return await _context.Products.FindAsync(id);
         }
 
-        public Task<Product> Remove(Product product)
+        public async Task<Product> GetProductCategory(int? id)
         {
-            throw new NotImplementedException();
+            return await _context.Products.Include(x => x.Category)
+                .SingleOrDefaultAsync(p => p.Id == id);
         }
 
-        public Task<Product> Update(Product product)
+        public async Task<Product> Remove(Product product)
         {
-            throw new NotImplementedException();
+            _context.Remove(product);
+            await _context.SaveChangesAsync();
+            return product;
+        }
+
+        public async Task<Product> Update(Product product)
+        {
+            _context.Update(product);
+            await _context.SaveChangesAsync();
+            return product;
         }
     }
 }
