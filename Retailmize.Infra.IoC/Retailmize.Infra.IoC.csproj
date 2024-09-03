@@ -4,4 +4,10 @@
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Retailmize.Application\Retailmize.Application.csproj" />
+    <ProjectReference Include="..\Retailmize.Domain\Retailmize.Domain.csproj" />
+    <ProjectReference Include="..\Retailmize.Infra.Data\Retailmize.Infra.Data.csproj" />
+  </ItemGroup>
+
 </Project>
