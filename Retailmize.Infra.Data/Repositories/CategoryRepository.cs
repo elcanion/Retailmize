@@ -1,5 +1,6 @@
 ﻿using Retailmize.Domain.Entities;
 using Retailmize.Domain.Interfaces;
+using Retailmize.Infra.Data.Context;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,27 +11,35 @@ namespace Retailmize.Infra.Data.Repositories
 {
     public class CategoryRepository : ICategoryRepository
     {
-        public Task<Product> Create(Category category)
+        ApplicationDbContext _context;
+        public CategoryRepository(ApplicationDbContext context) 
+        { 
+            _context = context;
+        }
+
+        public async Task<Category> Create(Category category)
+        {
+            _context.Add(category);
+            await _context.SaveChangesAsync();
+            return category;
+        }
+
+        public async Task<IEnumerable<Category>> GetAll()
         {
             throw new NotImplementedException();
         }
 
-        public Task<IEnumerable<Product>> GetAll()
+        public async Task<Category> GetById(int? Id)
         {
             throw new NotImplementedException();
         }
 
-        public Task<Product> GetById(int? Id)
+        public async Task<Category> Remove(Category category)
         {
             throw new NotImplementedException();
         }
 
-        public Task<Product> Remove(Category category)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<Product> Update(Category category)
+        public async Task<Category> Update(Category category)
         {
             throw new NotImplementedException();
         }
