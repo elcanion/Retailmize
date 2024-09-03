@@ -45,7 +45,7 @@ namespace Retailmize.Domain.Entities
                 $"Invalid description \"{description}\". The description must have at least 5 characters.");
             DomainExceptionValidation.When(price < 0, "Invalid price");
             DomainExceptionValidation.When(stock < 0, "Invalid stock");
-            DomainExceptionValidation.When(image.Length > 250,
+            DomainExceptionValidation.When(image?.Length > 250,
                 $"Invalid image name. The image name must have a maximum of 250 characters.");
 
             Name = name;

@@ -100,5 +100,21 @@ namespace Retailmize.Domain.Tests
                 .Throw<Retailmize.Domain.Validation.DomainExceptionValidation>()
                 .WithMessage("Invalid image name. The image name must have a maximum of 250 characters.");
         }
+
+        [Fact]
+        public void CreateProduct_NullImageNameValue_ResultNoDomainException()
+        {
+            Action action = () => new Product(1, "Product Name", "Product Description", 1, 1, null);
+            action.Should()
+                .NotThrow<Retailmize.Domain.Validation.DomainExceptionValidation>();
+        }
+
+        [Fact]
+        public void CreateProduct_NullImageNameValue_ResultNoNullReferenceException()
+        {
+            Action action = () => new Product(1, "Product Name", "Product Description", 1, 1, null);
+            action.Should()
+                .NotThrow<NullReferenceException>();
+        }
     }
 }
