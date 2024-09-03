@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Retailmize.Infra.IoC", "Ret
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Retailmize.WebUI", "Retailmize.WebUI\Retailmize.WebUI.csproj", "{7E2D2B34-0F2C-46EF-ACB3-38B9B7271F31}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Retailmize.Domain.Tests", "Retailmize.Domain.Tests\Retailmize.Domain.Tests.csproj", "{B518B9FA-5EB3-4993-A2A1-4390FB901D5F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{7E2D2B34-0F2C-46EF-ACB3-38B9B7271F31}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7E2D2B34-0F2C-46EF-ACB3-38B9B7271F31}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7E2D2B34-0F2C-46EF-ACB3-38B9B7271F31}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B518B9FA-5EB3-4993-A2A1-4390FB901D5F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B518B9FA-5EB3-4993-A2A1-4390FB901D5F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B518B9FA-5EB3-4993-A2A1-4390FB901D5F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B518B9FA-5EB3-4993-A2A1-4390FB901D5F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -9,10 +9,10 @@ namespace Retailmize.Domain.Interfaces
 {
     public interface ICategoryRepository
     {
-        Task<IEnumerable<Category>> GetAll();
-        Task<Category> GetById(int? Id);
-        Task<Category> Create(Category category);
-        Task<Category> Update(Category category);
-        Task<Category> Remove(Category category);
+        Task<IEnumerable<Product>> GetAll();
+        Task<Product> GetById(int? Id);
+        Task<Product> Create(Category category);
+        Task<Product> Update(Category category);
+        Task<Product> Remove(Category category);
     }
 }

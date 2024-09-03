@@ -15,7 +15,7 @@ namespace Retailmize.Domain.Entities
         public int Stock { get; private set; }
         public string Image { get; private set; }
         public int CategoryId { get; set; }
-        public Category Category { get; set; }
+        public Product Category { get; set; }
 
         public Product(string name, string description, decimal price, int stock, string image)
         {
@@ -42,11 +42,11 @@ namespace Retailmize.Domain.Entities
                 $"Invalid name \"{name}\". The name must have at least 3 characters.");
             DomainExceptionValidation.When(string.IsNullOrEmpty(description), "Description required");
             DomainExceptionValidation.When(description.Length < 5,
-                $"Invalid name \"{description}\". The description must have at least 5 characters.");
+                $"Invalid description \"{description}\". The description must have at least 5 characters.");
             DomainExceptionValidation.When(price < 0, "Invalid price");
             DomainExceptionValidation.When(stock < 0, "Invalid stock");
             DomainExceptionValidation.When(image.Length > 250,
-                $"Invalid name \"{image}\". The image name must have a maximum of 250 characters.");
+                $"Invalid image name. The image name must have a maximum of 250 characters.");
 
             Name = name;
             Description = description;
