@@ -1,6 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Retailmize.Application.Interfaces;
+using Retailmize.Application.Mappings;
+using Retailmize.Application.Services;
 using Retailmize.Domain.Interfaces;
 using Retailmize.Infra.Data.Context;
 using Retailmize.Infra.Data.Repositories;
@@ -24,6 +27,10 @@ namespace Retailmize.Infra.IoC
 
             services.AddScoped<ICategoryRepository, CategoryRepository>();
             services.AddScoped<IProductRepository, ProductRepository>();
+
+            services.AddScoped<IProductService, ProductService>();
+            services.AddScoped<ICategoryService, CategoryService>();
+            services.AddAutoMapper(typeof(DomainToDTOMapping));
 
             return services;
         }

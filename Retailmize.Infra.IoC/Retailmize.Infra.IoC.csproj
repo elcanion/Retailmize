@@ -5,6 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Retailmize.Application\Retailmize.Application.csproj" />
     <ProjectReference Include="..\Retailmize.Domain\Retailmize.Domain.csproj" />
     <ProjectReference Include="..\Retailmize.Infra.Data\Retailmize.Infra.Data.csproj" />
