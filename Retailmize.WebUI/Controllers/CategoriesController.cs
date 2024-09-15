@@ -19,5 +19,11 @@ namespace Retailmize.WebUI.Controllers
             var categories = await _categoryService.GetAll();
             return View(categories);
         }
+
+        [HttpGet]
+        public async Task<IActionResult> Create()
+        {
+            return View();
+        }
     }
 }

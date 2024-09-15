@@ -29,11 +29,6 @@ namespace Retailmize.Infra.Data.Repositories
 
         public async Task<Product> GetById(int? id)
         {
-            return await _context.Products.FindAsync(id);
-        }
-
-        public async Task<Product> GetProductCategory(int? id)
-        {
             return await _context.Products.Include(x => x.Category)
                 .SingleOrDefaultAsync(p => p.Id == id);
         }
