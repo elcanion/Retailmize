@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
@@ -6,10 +6,15 @@
 
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="10.1.1" />
+    <PackageReference Include="MediatR" Version="12.4.1" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Retailmize.Domain\Retailmize.Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Products\Handlers\" />
   </ItemGroup>
 
 </Project>
