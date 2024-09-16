@@ -1,12 +1,15 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Retailmize.Application.Interfaces;
 using Retailmize.Application.Mappings;
 using Retailmize.Application.Services;
+using Retailmize.Domain.Account;
 using Retailmize.Domain.Interfaces;
 using Retailmize.Infra.Data.Context;
+using Retailmize.Infra.Data.Identity;
 using Retailmize.Infra.Data.Repositories;
 using System;
 using System.Collections.Generic;
@@ -26,12 +29,21 @@ namespace Retailmize.Infra.IoC
                 b => b.MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName))
             );
 
+            services.AddIdentity<ApplicationUser, IdentityRole>()
+                .AddEntityFrameworkStores<ApplicationDbContext>()
+                .AddDefaultTokenProviders();
+
+            services.ConfigureApplicationCookie(options => options.AccessDeniedPath = "/Account/Login");
+
             services.AddScoped<ICategoryRepository, CategoryRepository>();
             services.AddScoped<IProductRepository, ProductRepository>();
 
             services.AddScoped<IProductService, ProductService>();
             services.AddScoped<ICategoryService, CategoryService>();
             services.AddAutoMapper(typeof(DomainToDTOMapping));
+
+            services.AddScoped<IAuthenticate, AuthenticateService>();
+            services.AddScoped<ISeedUserRoleInitial, SeedUserRoleInitial>();
 
             var handlers = AppDomain.CurrentDomain.Load("Retailmize.Application");
             services.AddMediatR(handlers);
