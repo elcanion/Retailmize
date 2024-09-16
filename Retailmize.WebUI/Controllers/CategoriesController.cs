@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Retailmize.Application.DTOs;
 using Retailmize.Application.Interfaces;
 using Retailmize.Application.Services;
@@ -7,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace Retailmize.WebUI.Controllers
 {
+    [Authorize]
     public class CategoriesController : Controller
     {
         private readonly ICategoryService _categoryService;
