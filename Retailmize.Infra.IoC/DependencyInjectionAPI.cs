@@ -43,7 +43,7 @@ namespace Retailmize.Infra.IoC
             services.AddScoped<IAuthenticate, AuthenticateService>();
 
             var handlers = AppDomain.CurrentDomain.Load("Retailmize.Application");
-            services.AddMediatR(handlers);
+            services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(handlers));
 
             return services;
         }
