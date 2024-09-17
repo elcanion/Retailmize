@@ -12,6 +12,5 @@ namespace Retailmize.API.Models
         [StringLength(20, ErrorMessage = "{0} must be at least {2} an max {1} characters long.")]
         [DataType(DataType.Password)]
         public string Password { get; set; }
-        public string ReturnUrl { get; set; }
     }
 }
