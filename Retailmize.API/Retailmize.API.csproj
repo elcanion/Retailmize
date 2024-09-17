@@ -9,10 +9,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\Retailmize.Infra.IoC\Retailmize.Infra.IoC.csproj" />
   </ItemGroup>
 
